@@ -1,0 +1,56 @@
+<!doctype html>  
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>SJ</title>
+	<meta name="author" content="Vitaliy Petrychuk">
+	<link href='http://fonts.googleapis.com/css?family=Play&subset=latin,cyrillic-ext' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="assets/css/system.css">
+	<link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+
+	<div id="reveal">
+		<div class="state-background"></div>
+		<div class="slides">
+
+			<section>
+				<h2 class="main-non-uppercase">about:me</h2>
+				<img class="main-me" src="assets/images/me.png" />
+				<p class="main-simple me">
+					<span class="contact empty"></span> Vitaliy Petrychuk
+				</p>
+				<p class="main-simple">
+					<span class="contact">e-mail</span> vitaliy@petrychuk.com<br/>
+					<span class="contact">skype</span> nameless-dot<br/>
+				</p>
+			</section>
+
+			<section data-state="customevent">
+				<h2>Custom Events</h2>
+				<pre><code contenteditable style="font-size: 18px; margin-top: 20px;">Reveal.addEventListener('customevent', function() {
+    console.log('"customevent" has fired');
+});</code></pre>
+			</section>
+
+		</div>
+
+
+		<aside class="controls">
+			<a class="left" href="#">&#x25C4;</a>
+			<a class="right" href="#">&#x25BA;</a>
+			<a class="up" href="#">&#x25B2;</a>
+			<a class="down" href="#">&#x25BC;</a>
+		</aside>
+
+		<div class="progress"><span></span></div>
+
+	</div>
+
+	<script src="assets/js/libs/highlight.js"></script>
+	<script src="assets/js/libs/classList.js"></script>
+	<script src="assets/js/libs/reveal.js"></script>
+	<script src="assets/js/libs/main.js"></script>
+
+</body>
+</html>

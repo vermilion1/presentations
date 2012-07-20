@@ -1,0 +1,29 @@
+
+#reveal h2 { font-family: 'Play'; }
+#reveal .main-non-uppercase { text-transform: none; }
+#reveal .progress span { background: #FF3C6B; }
+
+.main-me {
+	border-radius: 50%;
+	border: 10px solid rgba(255, 255, 255, 0.1);
+	box-shadow: 0 0 30px #444;
+}
+#reveal p.main-simple.me {
+	font-family: 'Play';
+	font-size: 140%;
+	margin-bottom: 35px;
+}
+#reveal p.main-simple {
+	width: 65%;
+	text-align: left;
+	margin: 20px auto 0 auto;
+}
+#reveal p.main-simple span.contact {
+	display: inline-block;
+	width: 90px;
+	background: rgba(150, 96, 109, 0.79);
+	font-size: 80%;
+	padding: 0 10px 1px 10px;
+	border-radius: 5px;
+}
+#reveal p.main-simple span.contact.empty { height: 0; padding: 0 5px; }
