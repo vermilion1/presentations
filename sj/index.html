@@ -26,15 +26,71 @@
 				</p>
 			</section>
 
-			<section data-state="customevent">
-				<h2>Custom Events</h2>
-				<pre><code contenteditable style="font-size: 18px; margin-top: 20px;">Reveal.addEventListener('customevent', function() {
-    console.log('"customevent" has fired');
-});</code></pre>
+			<section data-state="topic">
+				<h2 class="topic">Responsive інтерфейси</h2>
+			</section>
+
+			<section>
+				<section>
+					<h3>Якщо браузер працює повільно</h3>
+					<ul class="slow-browser-list">
+						<li>Зменшуємо кількість операцій</li>
+						<li>Спрощуємо операції</li>
+						<li>Вносимо зміни в UI</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Зменшуємо кількість операцій</h3>
+					<ul class="top-indent">
+						<li>
+							<b>Throttle</b><br/>
+							<a class="demo-link" href="http://benalman.com/code/projects/jquery-throttle-debounce/examples/throttle/">demo</a>
+						</li>
+						<li style="margin: 20px 0">
+							<b>Debounce</b><br/>
+							<a class="demo-link" href="http://benalman.com/code/projects/jquery-throttle-debounce/examples/debounce/">demo</a>
+						</li>
+						<li>
+							<b>Почитати:</b><br/>
+							<a href="http://benalman.com/projects/jquery-throttle-debounce-plugin/">throttle / debounce</a>
+						</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Спрощуємо операції</h3>
+					<p class="top-indent">
+						При Drag and Drop перетягуємо не цілий об'єкт, а тільки іконку
+					</p>
+					<p class="top-indent">
+						<img src="assets/images/drag-example.png" />
+					</p>
+				</section>
+			</section>
+
+			<section>
+				<h3>Оптимізація селекторів</h3>
+				<p class="top-indent relative">
+					<img class="turtle" src="assets/images/turtle.png" />
+					<pre><code contenteditable>ul li a { /*...*/ }</code></pre>
+					<pre><code contenteditable>.main span { /*...*/ }</code></pre>
+					<pre><code contenteditable>#my * { /*...*/ }</code></pre>
+				</p>
+				<p class="top-indent-double">
+					<b class="top-indent">Почитати:</b><br/>
+					<a href="http://www.stevesouders.com/blog/2009/06/18/simplifying-css-selectors/">Simplifying CSS Selectors</a>
+				</p>
 			</section>
 
 		</div>
 
+
+		<div class="sj-logo">
+			<img src="assets/images/sj.png" />
+			<span class="sj-first"></span>
+			<span class="sj-second"></span>
+			<span class="sj-third"></span>
+			<span class="sj-fourth"></span>
+		</div>
 
 		<aside class="controls">
 			<a class="left" href="#">&#x25C4;</a>
@@ -47,10 +103,11 @@
 
 	</div>
 
+	<script src="assets/js/libs/jquery.min.js"></script>
 	<script src="assets/js/libs/highlight.js"></script>
 	<script src="assets/js/libs/classList.js"></script>
 	<script src="assets/js/libs/reveal.js"></script>
-	<script src="assets/js/libs/main.js"></script>
+	<script src="assets/js/main.js"></script>
 
 </body>
 </html>

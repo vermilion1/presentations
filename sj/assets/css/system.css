@@ -52,8 +52,8 @@ table {
    These selection declarations have to be separate.
    No text-shadow: twitter.com/miketaylr/status/12228805301
    Also: hot pink. */
-::-moz-selection{ background: #FF3C6B; color:#fff; text-shadow: none; }
-::selection { background:#FF3C6B; color:#fff; text-shadow: none; }
+::-moz-selection{ background: #BFC997; color:#fff; text-shadow: none; }
+::selection { background:#BFC997; color:#fff; text-shadow: none; }
 
 :focus { outline: none; }
 
