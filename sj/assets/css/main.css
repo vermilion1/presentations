@@ -101,3 +101,8 @@ code.inline {
 	z-index: 1;
 }
 #reveal .arrow { margin: 0 0 -35px 0 }
+.hmm {
+	position: absolute;
+	right: 0;
+	bottom: 30px;
+}
