@@ -17,7 +17,7 @@
 		for (var i = 0; i < nodes.length; i++) {
 			nodes[i].onclick = function() {
 				alert('click');
-			}
+			};
 			nodes[i].number = i;
 		}
 		return +new Date() - time;
@@ -38,8 +38,8 @@
 
 </script>
 
-<button onclick="alert(test(dom, 10))">dom</button>
-<button onclick="alert(test(keep, 10))">keep</button>
+<button onclick="alert(test(dom, 100))">dom</button>
+<button onclick="alert(test(keep, 100))">keep</button>
 
 <table>
 <tr>

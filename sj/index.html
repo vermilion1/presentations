@@ -99,7 +99,7 @@
 				</section>
 				<section>
 					<h3>Оптимізація циклів</h3>
-					<h4>Навіщо? / <a class="arrow-link" href="demos/loops1.html">Benchmark</a></h4>
+					<h4>Навіщо? / <a href="demos/loops1.html">Benchmark</a></h4>
 					<p class="top-indent left">
 						<pre><code contenteditable>// воно живе
 var nodes = document.getElementsByTagName('div');</code></pre>
@@ -115,7 +115,7 @@ nodes[i].onclick // робота з DOM</code></pre>
 				</section>
 				<section>
 					<h3>Оптимізація циклів</h3>
-					<h4>Виносимо лишнє / <a class="arrow-link" href="demos/loops2.html">Benchmark</a></h4>
+					<h4>Виносимо лишнє / <a href="demos/loops2.html">Benchmark</a></h4>
 					<p class="top-indent">
 						<pre><code contenteditable>for (var i = 0; i < nodes.length; i++) {
     nodes[i].onclick = function() {
@@ -136,7 +136,73 @@ for (var i = nodes.length; i--;) {
 				</section>
 			</section>
 
-			<!--scope-->
+			<section>
+				<h3>Звернення до scope</h3>
+				<h4><a href="demos/scope.html">Benchmark</a></h4>
+				<p class="top-indent">
+						<pre><code contenteditable>var array = [3,2,3,7,3,2], // array!
+    result = 0; // result!
+
+function obj() {
+    // result? array? ні, не чув
+    function calculate() {
+        for (var i = array.length; --i;) {
+            // result? array? ні, не чув
+            result += array[i];
+        }
+    }
+}</code></pre>
+				</p>
+				<p class="top-indent left">
+					<b>Трохи тормозить</b> - немає повного кешування
+				</p>
+			</section>
+
+			<section>
+				<h3>Розгалуження на рівні функції</h3>
+				<p class="top-indent">
+					<pre><code class="small" contenteditable>element.onmousemove = function(e) {
+    if (navigator.userAgent.match(/MSIE/)) {
+        /* костиль для IE */
+    }
+    else {
+        /* пишем як положено */
+    }
+}</code></pre>
+				</p>
+				<p>
+					<pre><code class="small" contenteditable>if (navigator.userAgent.match(/MSIE/)) {
+    element.onmousemove = function(e) {
+        /* костиль для IE */
+    }
+}
+else {
+    element.onmousemove = function(e) {
+        /* пишем як положено */
+    }
+}</code></pre>
+				</p>
+			</section>
+
+			<section>
+				<h3>Мемоізація</h3>
+				<p class="top-indent">
+					<pre><code contenteditable>function fetchTemplate(path) {
+    path = 'templates/' + path + '.html';
+    if (!JST[path]) {
+        $.ajax({url:path,async:false}).then(function(data) {
+            JST[path] = _.template(data);
+        });
+    }
+    return JST[path];
+}</code></pre>
+				</p>
+				<p class="top-indent left">
+					<b>Почитати:</b><br/>
+					<a href="http://addyosmani.com/blog/faster-javascript-memoization/">Faster JavaScript Memoization</a>
+				</p>
+				<img class="memo" src="assets/images/memo.png" />
+			</section>
 
 		</div>
 

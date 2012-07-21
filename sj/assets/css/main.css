@@ -94,6 +94,10 @@ code.inline {
 	font-size: 100%;
 	line-height: 100%;
 }
+code.small {
+	font-size: 20px;
+	line-height: 22px;
+}
 .turtle {
 	position: absolute;
 	top: -35px;
@@ -105,4 +109,9 @@ code.inline {
 	position: absolute;
 	right: 0;
 	bottom: 30px;
+}
+.memo {
+	position: absolute;
+	bottom: 10px;
+	right: 0;
 }

@@ -1,0 +1,62 @@
+<!doctype html>  
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>loops</title>
+	<link rel="stylesheet" href="../assets/css/demo.css">
+	<script src="../assets/js/test.js"></script>
+</head>
+<body>
+
+<script>
+
+	function fromScope() {
+		var s = +new Date(),
+			array = new Array(100000),
+			result = 0;
+
+		function obj() {
+			function calculate() {
+				for (var i = array.length; --i;) {
+					array[i] || (array[i] = Math.random());
+					array[i] *= 100000;
+					result += array[i];
+				}
+				return result;
+			}
+			return {calculate:calculate}
+		}
+		obj().calculate();
+		return +new Date() - s;
+	}
+
+	function localCopy() {
+		var s = +new Date(),
+			_array = new Array(100000),
+			_result = 0;
+
+		function obj() {
+			function calculate() {
+				var array = _array,
+					result = _result;
+
+				for (var i = array.length; --i;) {
+					array[i] || (array[i] = Math.random());
+					array[i] *= 100000;
+					result += array[i];
+				}
+				return result;
+			}
+			return {calculate:calculate}
+		}
+		obj().calculate();
+		return +new Date() - s;
+	}
+
+</script>
+
+<button onclick="alert(test(fromScope, 10))">fromScope</button>
+<button onclick="alert(test(localCopy, 10))">localCopy</button>
+
+</body>
+</html>
