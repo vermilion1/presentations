@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>SJ</title>
+	<title>Responsive інтерфейси</title>
 	<meta name="author" content="Vitaliy Petrychuk">
 	<link href='http://fonts.googleapis.com/css?family=Play&subset=latin,cyrillic-ext' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="assets/css/system.css">
@@ -80,6 +80,62 @@
 					<a href="http://www.stevesouders.com/blog/2009/06/18/simplifying-css-selectors/">Simplifying CSS Selectors</a>
 				</p>
 			</section>
+
+			<section>
+				<section>
+					<h3>Оптимізація циклів</h3>
+					<p class="top-indent">
+						Багато звернень до length:
+					<pre><code contenteditable>for (var i = 0; i &lt; data.length; i++) {
+    // data[i]
+}</code></pre>
+					</p>
+					<p class="top-indent">
+						Одне звернення:
+					<pre><code contenteditable>for (var i = data.length; i--;) {
+    // data[i]
+}</code></pre>
+					</p>
+				</section>
+				<section>
+					<h3>Оптимізація циклів</h3>
+					<h4>Навіщо? / <a class="arrow-link" href="demos/loops1.html">Benchmark</a></h4>
+					<p class="top-indent left">
+						<pre><code contenteditable>// воно живе
+var nodes = document.getElementsByTagName('div');</code></pre>
+					</p>
+					<p class="top-indent left">
+						<code class="inline">nodes</code> - об'єкт NodeList (DOM)
+					</p>
+					<p class="top-indent left">
+						<pre><code contenteditable>nodes.length // робота з DOM
+nodes[i].onclick // робота з DOM</code></pre>
+					</p>
+				</section>
+				<section>
+					<h3>Оптимізація циклів</h3>
+					<h4>Виносимо лишнє / <a class="arrow-link" href="demos/loops2.html">Benchmark</a></h4>
+					<p class="top-indent">
+						<pre><code contenteditable>for (var i = 0; i < nodes.length; i++) {
+    nodes[i].onclick = function() {
+        alert('click');
+    }
+    nodes[i].number = i;
+}</code></pre>
+					</p>
+					<img class="arrow" src="assets/images/arrow.png" />
+					<p class="top-indent">
+						<pre><code contenteditable>var handler = function() { alert('click') };
+for (var i = nodes.length; i--;) {
+    var node = nodes[i];
+    node.onclick = handler;
+    node.number = i;
+}</code></pre>
+					</p>
+				</section>
+			</section>
+
+			<!--scope-->
 
 		</div>
 

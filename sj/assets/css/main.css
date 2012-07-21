@@ -1,9 +1,10 @@
 
 #reveal a:not(.image) { color: #A8D843; }
 #reveal a:not(.image):hover { color: #D9F1A7; background: none; }
-#reveal h2, #reveal h3 { font-family: 'Play'; }
+#reveal h2, #reveal h3, #reveal h4 { font-family: 'Play'; }
 #reveal .main-non-uppercase { text-transform: none; }
 #reveal .progress span { background: #FF3C6B; }
+#reveal p.left { text-align: left; width: 90%; margin-left: auto; margin-right: auto; }
 
 .sj-logo {
 	position: absolute;
@@ -85,8 +86,13 @@
 #reveal .top-indent-double { margin-top: 100px; }
 #reveal .relative { position: relative; }
 code {
-	font-size: 18px;
+	font-size: 22px;
+	line-height: 24px;
 	margin-top: 20px;
+}
+code.inline {
+	font-size: 100%;
+	line-height: 100%;
 }
 .turtle {
 	position: absolute;
@@ -94,3 +100,4 @@ code {
 	right: 0;
 	z-index: 1;
 }
+#reveal .arrow { margin: 0 0 -35px 0 }
