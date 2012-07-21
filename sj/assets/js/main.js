@@ -4,10 +4,6 @@ location.search.replace(/[A-Z0-9]+?=(\w*)/gi, function (a) {
 	query[ a.split('=').shift() ] = a.split('=').pop();
 });
 
-Reveal.addEventListener('topic', function () {
-//	console.log('topic!');
-});
-
 Reveal.initialize({
 	controls:false,
 	progress:false,
@@ -56,6 +52,19 @@ $(function() {
 		animate($sjThird, !isRunning);
 		animate($sjFourth, !isRunning);
 	}
+
+
+	Reveal.addEventListener('questions', function () {
+		var $questions = $('#questions').stop();
+		function animateTrollFace() {
+			$questions
+				.animate({marginTop:0}, 100 + Math.random() * 10)
+				.animate({marginTop:4 + Math.random()}, 200 + Math.random() * 10, function() {
+					animateTrollFace();
+				});
+		}
+		animateTrollFace();
+	});
 
 
 });
