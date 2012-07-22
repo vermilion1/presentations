@@ -1,5 +1,5 @@
-<!doctype html>  
-<html lang="en">
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
 	<meta charset="utf-8">
 	<title>Responsive інтерфейси</title>
@@ -32,6 +32,34 @@
 
 			<section>
 				<section>
+					<h3>Передчасна оптимізація</h3>
+					<p class="top-indent-double">
+						<img src="assets/images/pe.jpg" />
+					</p>
+				</section>
+				<section>
+					<h3>Передчасна оптимізація</h3>
+					<ul class="top-indent-double">
+						<li>
+							Симптоми:
+							<ul style="list-style: circle">
+								<li>Оптимізація коду ще до того<br/>
+									як він починає тормозити</li>
+							</ul>
+						</li>
+						<li style="margin-top: 30px">
+							Наслідки:
+							<ul style="list-style: circle">
+								<li>Втрата часу</li>
+								<li>Погіршення читабельності</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+			</section>
+
+			<section>
+				<section>
 					<h3>Якщо браузер працює повільно</h3>
 					<ul class="slow-browser-list">
 						<li>Зменшуємо кількість операцій</li>
@@ -41,20 +69,23 @@
 				</section>
 				<section>
 					<h3>Зменшуємо кількість операцій</h3>
-					<ul class="top-indent">
-						<li>
-							<b>Throttle</b><br/>
-							<a class="demo-link" href="http://benalman.com/code/projects/jquery-throttle-debounce/examples/throttle/">demo</a>
-						</li>
-						<li style="margin: 20px 0">
-							<b>Debounce</b><br/>
-							<a class="demo-link" href="http://benalman.com/code/projects/jquery-throttle-debounce/examples/debounce/">demo</a>
-						</li>
-						<li>
-							<b>Почитати:</b><br/>
-							<a href="http://benalman.com/projects/jquery-throttle-debounce-plugin/">throttle / debounce</a>
-						</li>
-					</ul>
+					<h4>Throttle / <a href="http://benalman.com/code/projects/jquery-throttle-debounce/examples/throttle/">demo</a></h4>
+					<p class="top-indent-double">
+						<img src="assets/images/throttle.png" />
+					</p>
+					<p class="top-indent">
+						Групує події, які були викликані в межах одного інтервалу
+					</p>
+				</section>
+				<section>
+					<h3>Зменшуємо кількість операцій</h3>
+					<h4>Debounce / <a href="http://benalman.com/code/projects/jquery-throttle-debounce/examples/debounce/">demo</a></h4>
+					<p class="top-indent-double">
+						<img src="assets/images/debounce.png" />
+					</p>
+					<p class="top-indent">
+						Групує події, що повторюються, інтервал між якими менший від заданого значення
+					</p>
 				</section>
 				<section>
 					<h3>Спрощуємо операції</h3>
@@ -68,17 +99,44 @@
 			</section>
 
 			<section>
-				<h3>Оптимізація селекторів</h3>
-				<p class="top-indent relative">
-					<img class="turtle" src="assets/images/turtle.png" />
-					<pre><code contenteditable>ul li a { /*...*/ }</code></pre>
-					<pre><code contenteditable>.main span { /*...*/ }</code></pre>
-					<pre><code contenteditable>#my * { /*...*/ }</code></pre>
-				</p>
-				<p class="top-indent-double">
-					<b class="top-indent">Почитати:</b><br/>
-					<a href="http://www.stevesouders.com/blog/2009/06/18/simplifying-css-selectors/">Simplifying CSS Selectors</a>
-				</p>
+				<section>
+					<h3>Оптимізація селекторів</h3>
+					<p class="top-indent relative">
+						<img class="turtle" src="assets/images/turtle.png" />
+						<pre><code contenteditable>ul li a { /*...*/ }</code></pre>
+						<pre><code contenteditable>.main span { /*...*/ }</code></pre>
+						<pre><code contenteditable>#my * { /*...*/ }</code></pre>
+					</p>
+					<p class="top-indent-double">
+						<b class="top-indent">Почитати:</b><br/>
+						<a href="http://www.stevesouders.com/blog/2009/06/18/simplifying-css-selectors/">Simplifying CSS Selectors</a>
+					</p>
+				</section>
+				<section>
+					<h3>Оптимізація селекторів</h3>
+					<h4 class="main-non-uppercase">jQuery також думає справа наліво</h4>
+					<p class="top-indent-double">
+						<pre><code contenteditable>$('div.article a.like') // погано</code></pre>
+						<pre><code contenteditable>$('.article .like')     // краще</code></pre>
+						<pre><code contenteditable>$('.like')              // ще краще</code></pre>
+					</p>
+				</section>
+				<section>
+					<h3>Оптимізація селекторів</h3>
+					<h4 class="main-non-uppercase">Звуження області пошуку</h4>
+					<p class="top-indent left">
+						Задаємо контекст:
+						<pre><code contenteditable>$('div.article a.like')     // погано
+$('.article').find('.like') // краще</code></pre>
+					</p>
+					<p class="top-indent left">
+						Використовуємо children, closest etc:
+						<pre><code contenteditable>$('#list').find('li')       // погано
+$('#list').children('li')   // краще</code></pre>
+						<pre><code contenteditable>$('li').parents('div').first() // погано
+$('li').closest('div')         // краще</code></pre>
+					</p>
+				</section>
 			</section>
 
 			<section>
@@ -205,18 +263,174 @@ else {
 			</section>
 
 			<section>
-				<h2>Питання?</h2>
-				<p class="top-indent-double">
-					document.getElementById('reveal').onclick = function(e) {
-						console.log(e.target.tagName === 'IMG')
-					}
+				<h3 class="main-non-uppercase">documentFragment</h3>
+				<p class="top-indent">
+					<pre><code contenteditable>function makeHtml(data) { // повертаємо всі вузли як один
+    var fragment = document.createDocumentFragment();
+    for (var i = 0; i &lt; data.length; i++) {
+        var td = document.createElement('td');
+        td.innerHTML = data[i];
+        fragment.appendChild(td);
+    }
+    return fragment;
+}
+// documentFragment зникає, вставляються його потомки
+tr.appendChild(makeHtml([1,2,3,4,5]));</code></pre>
 				</p>
+				<p class="top-indent">
+					<b>Почитати:</b><br/>
+					<a href="http://ejohn.org/blog/dom-documentfragments/">DOM DocumentFragments</a>
+				</p>
+			</section>
+
+			<section>
+				<section>
+					<h3>events bubbling</h3>
+					<ul class="top-indent">
+						<li>
+							Один обробник на багато вузлів
+							<ul style="list-style: circle; font-size: 80%">
+								<li>Таблиця</li>
+								<li>Список</li>
+							</ul>
+						</li>
+						<li style="margin: 30px 0;">
+							Менше пам'яті
+							<ul style="list-style: circle; font-size: 80%">
+								<li>Один обробник</li>
+							</ul>
+						</li>
+						<li>
+							Відпадає потреба:
+							<ul style="list-style: circle; font-size: 80%">
+								<li>Додавання / видалення обробників</li>
+								<li>Слідкування на змінами в DOM</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section>
+					<h3>events bubbling</h3>
+					<p class="top-indent">
+						<table class="table">
+							<tr>
+								<td class="hasEvent">onclick</td>
+								<td class="hasEvent">onclick</td>
+								<td class="hasEvent">onclick</td>
+								<td class="hasEvent">onclick</td>
+								<td class="hasEvent">onclick</td>
+							</tr>
+							<tr>
+								<td class="hasEvent">onclick</td>
+								<td class="hasEvent">onclick</td>
+								<td></td>
+								<td></td>
+								<td></td>
+							</tr>
+						</table>
+						</p>
+						<img class="arrow" src="assets/images/arrow.png" />
+						<p class="top-indent">
+						<table class="table-wrapper">
+							<tr>
+								<th>onclick</th>
+							</tr>
+							<tr>
+								<td>
+									<table class="table">
+										<tr>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+										</tr>
+										<tr>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+						</table>
+					</p>
+				</section>
+				<section>
+					<h3>events bubbling</h3>
+					<ul id="tweets" class="top-indent"></ul>
+					<p class="top-indent">
+						<pre><code class="small" contenteditable>document.getElementById('tweets').onclick = function(e) {
+    if (e.target.tagName !== 'B') return false;
+    var id = e.target.getAttribute('data-id'),
+        url = 'https://twitter.com/Softjourn/status/' + id;
+
+    window.open(url);
+}</code></pre>
+					</p>
+					<p>
+						<pre><code class="small" contenteditable>$('#tweets').on('click', 'b', function() {
+    var id = this.getAttribute('data-id'),
+        url = 'https://twitter.com/Softjourn/status/' + id;
+
+    window.open(url);
+}</code></pre>
+					</p>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h3>Оптимізація створення вузлів</h3>
+					<h4>Менше операцій з innerHTML / <a href="demos/innerHTML.html">Benchmark</a></h4>
+					<p class="top-indent">
+						<pre><code contenteditable>var target = document.getElementById('reveal');
+target.innerHTML = '';
+target.innerHTML += '&lt;h1&gt;title&lt;/h1&gt;';
+target.innerHTML += '&lt;div&gt;text&lt;/div&gt;';
+target.innerHTML += '&lt;div&gt;tags&lt;/div&gt;';</code></pre>
+					</p>
+					<p>
+						<pre><code contenteditable>var target = document.getElementById('reveal'),
+    html = [];
+
+html.push('&lt;h1&gt;title&lt;/h1&gt;');
+html.push('&lt;div&gt;text&lt;/div&gt;');
+html.push('&lt;div&gt;tags&lt;/div&gt;');
+target.innerHTML = html.join('');</code></pre>
+					</p>
+				</section>
+				<section>
+					<h3>Оптимізація створення вузлів</h3>
+					<h4>Шаблонізатори / <a href="http://underscorejs.org/#template">Underscore</a> / <a href="http://handlebarsjs.com/">Handlebars</a></h4>
+					<p class="top-indent">
+						<pre><code contenteditable>&lt;script type="text/template" id="users-template"&gt;
+    &lt;% _.each(users, function(user) { %&gt;
+        &lt;li&gt;&lt;%= user.firstName %&gt;&lt;/li&gt;
+    &lt;% }) %&gt;
+&lt;/script&gt;</code></pre>
+					</p>
+					<p>
+						<pre><code contenteditable>var users = [
+        {firstName:'Paul', lastName:'Irish'},
+        {firstName:'Lea',  lastName:'Verou'}
+    ],
+    template = $('#users-template').html(),
+    html = _.template(template, users);
+
+$('#target').html(html);
+</code></pre>
+					</p>
+				</section>
 			</section>
 
 			<section data-state="questions">
 				<h2>Питання?</h2>
+
 				<p class="top-indent-double">
-					<img id="questions" src="assets/images/questions.png" />
+					<img id="questions" src="assets/images/questions.png"/>
 				</p>
 			</section>
 
@@ -224,7 +438,7 @@ else {
 
 
 		<div class="sj-logo">
-			<img src="assets/images/sj.png" />
+			<img src="assets/images/sj.png"/>
 			<span class="sj-first"></span>
 			<span class="sj-second"></span>
 			<span class="sj-third"></span>
@@ -242,7 +456,14 @@ else {
 
 	</div>
 
-	<script src="assets/js/libs/jquery.min.js"></script>
+	<script id="tweets-template" type="html/template">
+		<li class="tweet">
+			<b data-id="{{id_str}}">@{{username}}</b><br/>
+			<span>{{text}}</span>
+		</li>
+	</script>
+
+	<script src="assets/js/libs/jquery.js"></script>
 	<script src="assets/js/libs/highlight.js"></script>
 	<script src="assets/js/libs/classList.js"></script>
 	<script src="assets/js/libs/reveal.js"></script>
