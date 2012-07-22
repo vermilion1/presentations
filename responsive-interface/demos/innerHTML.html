@@ -1,0 +1,66 @@
+<!doctype html>  
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>innerHTML</title>
+	<link rel="stylesheet" href="../assets/css/demo.css">
+	<script src="../assets/js/test.js"></script>
+</head>
+<body>
+
+<script>
+
+	function test1() {
+		var time = +new Date(),
+			testElem = document.getElementById('test');
+
+		testElem.innerHTML = '';
+		testElem.innerHTML += 'TEST1: ';
+		testElem.innerHTML += 'element1 ';
+		testElem.innerHTML += 'element2 ';
+		testElem.innerHTML += 'element3 ';
+		testElem.innerHTML += 'element4 ';
+		testElem.innerHTML += 'element5 ';
+		return +new Date() - time;
+	}
+
+	function test2() {
+		var time = +new Date(),
+			testElem = document.getElementById('test'),
+			html = '';
+
+		html += 'TEST2: ';
+		html += 'element1 ';
+		html += 'element2 ';
+		html += 'element3 ';
+		html += 'element4 ';
+		html += 'element5 ';
+		testElem.innerHTML = html;
+		return +new Date() - time;
+	}
+
+	function test3() {
+		var time = +new Date(),
+			testElem = document.getElementById('test'),
+			html = [];
+
+		html.push('TEST3: ');
+		html.push('element1 ');
+		html.push('element2 ');
+		html.push('element3 ');
+		html.push('element4 ');
+		html.push('element5 ');
+		testElem.innerHTML = html.join('');
+		return +new Date() - time;
+	}
+
+</script>
+
+<button onclick="alert(test(test1, 10000))">test1 (innerHTML)</button>
+<button onclick="alert(test(test2, 10000))">test2 (конкатенація)</button>
+<button onclick="alert(test(test3, 10000))">test3 (масив)</button>
+
+<div id="test"></div>
+
+</body>
+</html>
