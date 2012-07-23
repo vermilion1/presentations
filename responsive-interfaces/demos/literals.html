@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>scope</title>
+	<link rel="stylesheet" href="../assets/css/demo.css">
+	<script src="../assets/js/test.js"></script>
+</head>
+<body>
+
+<script>
+
+	function leterals() {
+		var s = +new Date();
+		for (var i = 0; i < 1000000; i++) {
+			var a = [], o = {};
+		}
+		return +new Date() - s;
+	}
+
+	function classic() {
+		var s = +new Date();
+		for (var i = 0; i < 1000000; i++) {
+			var a = new Array, o = new Object;
+		}
+		return +new Date() - s;
+	}
+
+</script>
+
+<button onclick="alert(test(leterals, 1))">leterals</button>
+<button onclick="alert(test(classic, 1))">classic</button>
+
+</body>
+</html>

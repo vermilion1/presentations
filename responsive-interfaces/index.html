@@ -426,6 +426,39 @@ $('#target').html(html);
 				</section>
 			</section>
 
+			<section>
+				<section data-state="questions">
+					<h2>Порада</h2>
+					<h4>Літерали / <a href="demos/literals.html">Benchmark</a></h4>
+
+					<p class="top-indent">
+						<code class="inline">{}, []</code> - швидше, коротше, більш читабельно
+					</p>
+
+					<p class="top-indent">
+						<pre><code contenteditable>var arrayVariable = [],
+    objectVariable = {};</code></pre>
+						<pre><code contenteditable>var arrayVariable = new Array,
+    objectVariable = new Object;</code></pre>
+					</p>
+				</section>
+				<section data-state="questions">
+					<h2>Порада</h2>
+					<h4>Приведення до числа</h4>
+
+					<p class="top-indent">
+						<pre><code contenteditable>var one    = '12.4',
+    two    = '012.4',
+    three  = 'q12.4', // не підходить
+    fourth = '12.4q'; // і це також</code></pre>
+					<pre><code contenteditable>console.log(+one, +two, +three, +fourth, +new Date())
+// 12.4 12.4 NaN NaN 1343038778874</code></pre>
+<pre><code contenteditable>console.log(parseInt(two), parseInt(two, 10))
+// 10 12</code></pre>
+					</p>
+				</section>
+			</section>
+
 			<section data-state="questions">
 				<h2>Питання?</h2>
 
