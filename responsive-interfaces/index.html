@@ -418,7 +418,7 @@ target.innerHTML = html.join('');</code></pre>
         {firstName:'Lea',  lastName:'Verou'}
     ],
     template = $('#users-template').html(),
-    html = _.template(template, users);
+    html = _.template(template, {users:users});
 
 $('#target').html(html);
 </code></pre>
