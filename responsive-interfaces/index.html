@@ -285,6 +285,51 @@ tr.appendChild(makeHtml([1,2,3,4,5]));</code></pre>
 
 			<section>
 				<section>
+					<h3>Оптимізація створення вузлів</h3>
+					<h4>Менше операцій з innerHTML / <a href="demos/innerHTML.html">Benchmark</a></h4>
+					<p class="top-indent">
+						<pre><code contenteditable>var target = document.getElementById('reveal');
+target.innerHTML = '';
+target.innerHTML += '&lt;h1&gt;title&lt;/h1&gt;';
+target.innerHTML += '&lt;div&gt;text&lt;/div&gt;';
+target.innerHTML += '&lt;div&gt;tags&lt;/div&gt;';</code></pre>
+					</p>
+					<p>
+						<pre><code contenteditable>var target = document.getElementById('reveal'),
+    html = [];
+
+html.push('&lt;h1&gt;title&lt;/h1&gt;');
+html.push('&lt;div&gt;text&lt;/div&gt;');
+html.push('&lt;div&gt;tags&lt;/div&gt;');
+target.innerHTML = html.join('');</code></pre>
+					</p>
+				</section>
+				<section>
+					<h3>Оптимізація створення вузлів</h3>
+					<h4>Шаблонізатори / <a href="http://underscorejs.org/#template">Underscore</a> / <a href="http://handlebarsjs.com/">Handlebars</a></h4>
+					<p class="top-indent">
+						<pre><code contenteditable>&lt;script type="text/template" id="users-template"&gt;
+    &lt;% _.each(users, function(user) { %&gt;
+        &lt;li&gt;&lt;%= user.firstName %&gt;&lt;/li&gt;
+    &lt;% }) %&gt;
+&lt;/script&gt;</code></pre>
+					</p>
+					<p>
+						<pre><code contenteditable>var users = [
+        {firstName:'Paul', lastName:'Irish'},
+        {firstName:'Lea',  lastName:'Verou'}
+    ],
+    template = $('#users-template').html(),
+    html = _.template(template, {users:users});
+
+$('#target').html(html);
+</code></pre>
+					</p>
+				</section>
+			</section>
+
+			<section>
+				<section>
 					<h3>events bubbling</h3>
 					<ul class="top-indent">
 						<li>
@@ -377,51 +422,6 @@ tr.appendChild(makeHtml([1,2,3,4,5]));</code></pre>
 
     window.open(url);
 }</code></pre>
-					</p>
-				</section>
-			</section>
-
-			<section>
-				<section>
-					<h3>Оптимізація створення вузлів</h3>
-					<h4>Менше операцій з innerHTML / <a href="demos/innerHTML.html">Benchmark</a></h4>
-					<p class="top-indent">
-						<pre><code contenteditable>var target = document.getElementById('reveal');
-target.innerHTML = '';
-target.innerHTML += '&lt;h1&gt;title&lt;/h1&gt;';
-target.innerHTML += '&lt;div&gt;text&lt;/div&gt;';
-target.innerHTML += '&lt;div&gt;tags&lt;/div&gt;';</code></pre>
-					</p>
-					<p>
-						<pre><code contenteditable>var target = document.getElementById('reveal'),
-    html = [];
-
-html.push('&lt;h1&gt;title&lt;/h1&gt;');
-html.push('&lt;div&gt;text&lt;/div&gt;');
-html.push('&lt;div&gt;tags&lt;/div&gt;');
-target.innerHTML = html.join('');</code></pre>
-					</p>
-				</section>
-				<section>
-					<h3>Оптимізація створення вузлів</h3>
-					<h4>Шаблонізатори / <a href="http://underscorejs.org/#template">Underscore</a> / <a href="http://handlebarsjs.com/">Handlebars</a></h4>
-					<p class="top-indent">
-						<pre><code contenteditable>&lt;script type="text/template" id="users-template"&gt;
-    &lt;% _.each(users, function(user) { %&gt;
-        &lt;li&gt;&lt;%= user.firstName %&gt;&lt;/li&gt;
-    &lt;% }) %&gt;
-&lt;/script&gt;</code></pre>
-					</p>
-					<p>
-						<pre><code contenteditable>var users = [
-        {firstName:'Paul', lastName:'Irish'},
-        {firstName:'Lea',  lastName:'Verou'}
-    ],
-    template = $('#users-template').html(),
-    html = _.template(template, {users:users});
-
-$('#target').html(html);
-</code></pre>
 					</p>
 				</section>
 			</section>
