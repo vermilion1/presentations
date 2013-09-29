@@ -1,0 +1,27 @@
+.reveal .-m-top-40 {
+  margin-top: 40px;
+}
+.reveal .-a-left {
+  text-align: left;
+}
+.reveal .-a-center {
+  text-align: center;
+}
+
+/* first slide */
+
+.reveal .-cover h1, h4, p {
+  text-align: left;
+}
+.reveal .-cover > img {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.reveal .-cover > .-author-name {
+  margin-top: 40px;
+}
+.reveal .-cover > .-author-position {
+  font-size: 55%;
+  margin-top: -10px;
+}
