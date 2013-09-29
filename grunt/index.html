@@ -31,7 +31,7 @@
         <ul>
           <li>What is Grunt?</li>
           <li>Why use Grunt?</li>
-          <li>How do I use it?</li>
+          <li>How use Grunt?</li>
         </ul>
       </section>
 
@@ -40,6 +40,7 @@
           <h2>What is Grunt?</h2>
           <blockquote>Grunt is a <strong>task-based</strong> command-line build tool for JavaScript projects.</blockquote>
         </section>
+
         <section>
           <h2>Task-based?</h2>
           <ul>
@@ -71,8 +72,94 @@
 
       <section>
         <section>
-          <h2>How do I use it?</h2>
+          <h2>How use Grunt?</h2>
         </section>
+
+        <section>
+          <h2>Install Node.js + npm</h2>
+          <p><a href="http://nodejs.org">http://nodejs.org</a></p>
+          <blockquote>Node.js is a software platform that is used to build scalable network server-side applications.</blockquote>
+        </section>
+
+        <section>
+          <h2>Install Grunt CLI</h2>
+          You need to install Grunt's Command Line Interface (CLI) globally.
+          <pre><code>$ npm install -g grunt-cli</code></pre>
+        </section>
+
+        <section>
+          <h2>Install Grunt</h2>
+          <pre><code>$ npm install grunt --save-dev</code></pre>
+          <p class="-a-left -m-left-50">This will install the latest version of Grunt in your current directory and will add this dependency to <i>devDependencies</i> in your <strong>package.json</strong> file.</p>
+        </section>
+
+        <section>
+          <h2>Configure project</h2>
+          <ul>
+            <li>package.json</li>
+            <li>Gruntfile.js</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>package.json</h2>
+          <pre><code class="json">{
+  "name" : "project-name",
+  "version" : 0.0.1,
+  "devDependencies" : {
+    "grunt" : "~0.4.1",
+    "grunt-contrib-jshint" : "~0.6.4"
+  }
+}</code></pre>
+          <p class="-a-left -m-left-50">After executing command below <strong>npm</strong> will install all defined dependencies:</p>
+          <pre><code>$ npm install</code></pre>
+        </section>
+
+        <section>
+          <h2>Gruntfile.js</h2>
+          <pre><code class="javascript">module.exports = function (grunt) {
+
+  // Configure tasks
+  grunt.initConfig({
+    jshint : {
+      options : {
+        curly : true,
+        eqnull : true
+      },
+      all : ['Gruntfile.js', 'lib/**/*.js', 'test/**/*.js']
+    }
+  });
+
+  // Load plugins
+  grunt.loadNpmTask('grunt-contrib-jshint');
+
+  // Register custom tasks
+  grunt.registerTask('default', ['jshint']);
+};
+</code></pre>
+        </section>
+
+        <section>
+          <h2>Demo</h2>
+          <p class="-a-left -m-left-50">
+            <code>default</code> task refers to the <code>jshint</code> task.<br />
+            <code>default</code> is a default Grunt task.<br />
+          </p>
+          <p class="-a-left -m-left-50">So those commands:</p>
+          <pre><code>$ grunt</code></pre>
+          <pre><code>$ grunt default</code></pre>
+          <pre><code>$ grunt jshint</code></pre>
+          <p class="-a-left -m-left-50">Do the same thing:</p>
+          <pre><code>$ grunt                                                                     1 ↵
+Running "jshint:dist" (jshint) task
+>> 42 files lint free.
+
+Done, without errors.</code></pre>
+        </section>
+      </section>
+
+      <section>
+        <h2>Conclusion</h2>
       </section>
 
       <section>

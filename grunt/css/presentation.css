@@ -1,16 +1,18 @@
-.reveal .-m-top-40 {
-  margin-top: 40px;
-}
-.reveal .-a-left {
-  text-align: left;
-}
-.reveal .-a-center {
-  text-align: center;
+.reveal .-m-top-40 { margin-top: 40px; }
+.reveal .-m-left-50 { margin-left: 50px; }
+.reveal .-a-left { text-align: left; }
+.reveal .-a-center { text-align: center; }
+
+.reveal pre code {
+  max-height: 450px;
+  background: #312F2D;
 }
 
 /* first slide */
 
-.reveal .-cover h1, h4, p {
+.reveal .-cover h1,
+.reveal .-cover h4,
+.reveal .-cover p {
   text-align: left;
 }
 .reveal .-cover > img {
