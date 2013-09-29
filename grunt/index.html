@@ -30,8 +30,8 @@
         <h2>Agenda</h2>
         <ul>
           <li>What is Grunt?</li>
-          <li>Why use Grunt?</li>
-          <li>How use Grunt?</li>
+          <li>Why to use Grunt?</li>
+          <li>How to use Grunt?</li>
         </ul>
       </section>
 
@@ -55,16 +55,16 @@
 
       <section>
         <section>
-          <h2>Why use task runner?</h2>
+          <h2>Why to use task runner?</h2>
           <blockquote>Automation</blockquote>
         </section>
 
         <section>
-          <h2>Why use Grunt?</h2>
+          <h2>Why to use Grunt?</h2>
           <ul>
             <li>Large Community</li>
             <li>Easy to use</li>
-            <li>Plugins repository</li>
+            <li>Hundreds of plugins</li>
             <li>Everybody uses it</li>
           </ul>
         </section>
@@ -72,7 +72,7 @@
 
       <section>
         <section>
-          <h2>How use Grunt?</h2>
+          <h2>How to use Grunt?</h2>
         </section>
 
         <section>
@@ -83,14 +83,14 @@
 
         <section>
           <h2>Install Grunt CLI</h2>
-          You need to install Grunt's Command Line Interface (CLI) globally.
+          <p>Grunt's Command Line Interface (CLI)<br />should be installed globally:</p>
           <pre><code>$ npm install -g grunt-cli</code></pre>
         </section>
 
         <section>
           <h2>Install Grunt</h2>
           <pre><code>$ npm install grunt --save-dev</code></pre>
-          <p class="-a-left -m-left-50">This will install the latest version of Grunt in your current directory and will add this dependency to <i>devDependencies</i> in your <strong>package.json</strong> file.</p>
+          <p class="-a-left -m-left-50">This will install the latest version of Grunt in your current directory and will add grunt as a dependency to <i>devDependencies</i> in your <strong>package.json</strong> file.</p>
         </section>
 
         <section>
@@ -145,12 +145,12 @@
             <code>default</code> task refers to the <code>jshint</code> task.<br />
             <code>default</code> is a default Grunt task.<br />
           </p>
-          <p class="-a-left -m-left-50">So those commands:</p>
+          <p class="-a-left -m-left-50">So these commands:</p>
           <pre><code>$ grunt</code></pre>
           <pre><code>$ grunt default</code></pre>
           <pre><code>$ grunt jshint</code></pre>
           <p class="-a-left -m-left-50">Do the same thing:</p>
-          <pre><code>$ grunt                                                                     1 ↵
+          <pre><code>$ grunt
 Running "jshint:dist" (jshint) task
 >> 42 files lint free.
 
