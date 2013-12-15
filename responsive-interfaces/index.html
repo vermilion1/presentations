@@ -127,12 +127,13 @@
 					<p class="top-indent left">
 						Задаємо контекст:
 						<pre><code contenteditable>$('div.article a.like')     // погано
-$('.article').find('.like') // краще</code></pre>
+$('.article .like') // краще</code></pre>
 					</p>
 					<p class="top-indent left">
 						Використовуємо children, closest etc:
 						<pre><code contenteditable>$('#list').find('li')       // погано
-$('#list').children('li')   // краще</code></pre>
+$('#list').children('li')   // краще
+$('#list > li')             // ще краще</code></pre>
 						<pre><code contenteditable>$('li').parents('div').first() // погано
 $('li').closest('div')         // краще</code></pre>
 					</p>
