@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>How Browser Works</title>
+  <meta name="author" content="Vitaliy Petrychuk">
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" href="css/reveal.min.css">
+  <link rel="stylesheet" href="css/theme/vpetrychuk.css" id="theme">
+  <link rel="stylesheet" href="css/presentation.css">
+  <link rel="stylesheet" href="lib/css/zenburn.css">
+</head>
+
+<body>
+  <div class="reveal">
+
+    <div class="slides">
+      <section class="-cover">
+        <h1>How<br />Browser<br />Works</h1>
+        <img src="images/browsers.png" />
+        <p class="-author-name">Vitaliy Petrychuk</p>
+        <p class="-author-position">Front-End Developer @SoftServe</p>
+      </section>
+
+      <section>
+        <h2>Agenda</h2>
+        <ul>
+          <li>Introduction</li>
+          <li>High level structure</li>
+          <li>Life of a request</li>
+          <li>HTML Parsing</li>
+          <li>CSS Parsing</li>
+          <li>Rendering</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Introduction</h2>
+        <p>Web browsers are the most widely used software.</p>
+      </section>
+
+      <section>
+        <h2>High level structure</h2>
+        <img src="images/components.png" alt=""/>
+      </section>
+
+      <section>
+        <section>
+          <h2>Life of a request</h2>
+          <img src="images/life-of-a-request.png" alt=""/>
+        </section>
+
+        <section>
+          <h2>Life of a request</h2>
+          <img src="images/life-of-a-request-parts.png" alt=""/>
+        </section>
+      </section>
+
+
+      <section class="-html-parsing">
+        <section class="-slide-1">
+          <h2>HTML Parsing</h2>
+          <pre><code>&lt;html&gt;
+  &lt;body&gt;
+    &lt;p&gt;
+      Hello World
+    &lt;/p&gt;
+    &lt;div&gt;
+      &lt;img src=&quot;example.png&quot;/&gt;
+    &lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        </section>
+
+        <section class="-slide-2">
+          <h2>HTML Parsing</h2>
+          <pre><code>&lt;html&gt;
+  &lt;body&gt;
+    &lt;p&gt;
+      Hello World
+    &lt;/p&gt;
+    &lt;div&gt;
+      &lt;img src=&quot;example.png&quot;/&gt;
+    &lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          <img src="images/dom-tree.png" alt=""/>
+        </section>
+      </section>
+
+
+      <section class="-css-parsing">
+        <section class="-slide-1">
+          <h2>CSS Parsing</h2>
+            <pre><code>p,
+div {
+  margin-top: 3px;
+}
+
+.error {
+  color: red;
+}</code></pre>
+        </section>
+
+        <section class="-slide-2">
+          <h2>CSS Parsing</h2>
+            <pre><code>p,
+div {
+  margin-top: 3px;
+}
+
+.error {
+  color: red;
+}</code></pre>
+          <img src="images/css-tree.png" alt=""/>
+        </section>
+      </section>
+
+
+      <section>
+        <section>
+          <h2>Rendering</h2>
+        </section>
+
+        <section>
+          <h2>So far</h2>
+          <img src="images/main-flow-so-far.png" alt=""/>
+        </section>
+
+        <section>
+          <h2>Layout</h2>
+          <img src="images/main-flow-layout.png" alt=""/>
+        </section>
+
+        <section>
+          <h2>Paint</h2>
+          <img src="images/main-flow.png" alt=""/>
+        </section>
+
+        <section>
+          <h2>Repaint</h2>
+          <img src="images/main-flow-repaint.png" alt=""/>
+        </section>
+
+        <section>
+          <h2>Reflow</h2>
+          <img src="images/main-flow-reflow.png" alt=""/>
+        </section>
+      </section>
+
+      <section>
+        <h2>Questions?</h2>
+      </section>
+
+    </div>
+
+  </div>
+
+  <script src="lib/js/head.min.js"></script>
+  <script src="js/reveal.min.js"></script>
+
+  <script>
+
+    // Full list of configuration options available here:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+      controls: false,
+      progress: true,
+      history: true,
+      center: true,
+
+      theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+      transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+      // Optional libraries used to extend on reveal.js
+      dependencies: [
+        { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+        { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+        { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+        { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+        { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+        { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+      ]
+    });
+
+  </script>
+
+</body>
+</html>
