@@ -3,87 +3,27 @@
 <head>
   <meta charset="utf-8">
   <title>Presentations</title>
-  <style>
-    body {
-      background: #fcfcfc;
-      margin: 100px auto;
-      max-width: 696px;
-      font: 20px Arial;
-      color: #666;
-    }
-    .presentations {
-      font-size: 0;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
-    .presentation {
-      font-size: 20px;
-      display: inline-block;
-      vertical-align: top;
-      margin: 6px;
-    }
-    .presentation-link {
-      -webkit-box-sizing: border-box;
-      box-sizing: border-box;
-      -webkit-transition: all .2s ease-out;
-      -moz-transition: all .2s ease-out;
-      transition: all .2s ease-out;
-      -webkit-border-radius: 3px;
-      border-radius: 3px;
-      text-decoration: none;
-      background: #ddd;
-      color: #222;
-      display: block;
-      line-height: 1;
-      padding: 20px 20px 40px;
-      width: 220px;
-      min-height: 130px;
-    }
-    .presentation-link:hover {
-      background: #444;
-      color: #ddd;
-    }
-    .presentation-link:hover > .presentation-date {
-      color: #aaa;
-    }
-    .presentation-date {
-      display: block;
-      color: #777;
-      font-size: 13px;
-      line-height: 2;
-    }
-
-    @media (max-width: 696px) {
-      body { margin: 0; }
-      .presentation { display: block; }
-      .presentation-link {
-        padding: 15px 15px 10px;
-        min-height: 0;
-        width: auto;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
 <ul class="presentations">
   <li class="presentation">
-    <a class="presentation-link" href="how-browsers-work">
+    <a class="presentation__link" href="how-browsers-work">
       How Browsers Work
-      <span class="presentation-date">Feb 28, 2014</span>
+      <span class="presentation__date">Feb 28, 2014</span>
     </a>
   </li>
   <li class="presentation">
-    <a class="presentation-link" href="grunt">
+    <a class="presentation__link" href="grunt">
       Grunt.js
-      <span class="presentation-date">Sep 29, 2013</span>
+      <span class="presentation__date">Sep 29, 2013</span>
     </a>
   </li>
   <li class="presentation">
-    <a class="presentation-link" href="responsive-interfaces">
+    <a class="presentation__link" href="responsive-interfaces">
       Responsive Interfaces
-      <span class="presentation-date">Jul 20, 2012</span>
+      <span class="presentation__date">Jul 20, 2012</span>
     </a>
   </li>
 </ul>

@@ -1,0 +1,80 @@
+$fontSize: 20px;
+$presentation: presentation;
+
+@mixin rounded($rule: 3px) {
+  -webkit-border-radius: $rule;
+  border-radius: $rule;
+}
+
+@mixin box-sizing($rule: border-box) {
+  -webkit-box-sizing: $rule;
+  box-sizing: $rule;
+}
+
+@mixin transition($rule: all .2s ease-out) {
+  -webkit-transition: $rule;
+  -moz-transition: $rule;
+  transition: $rule;
+}
+
+body {
+  background: #fcfcfc;
+  margin: 100px auto;
+  max-width: 696px;
+  font: $fontSize Arial;
+  color: #666;
+}
+
+.presentations {
+  font-size: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.#{$presentation} {
+  font-size: $fontSize;
+  display: inline-block;
+  vertical-align: top;
+  margin: 6px;
+}
+
+.#{$presentation}__link {
+  @include box-sizing();
+  @include transition();
+  @include rounded();
+  text-decoration: none;
+  background: #ddd;
+  color: #222;
+  display: block;
+  line-height: 1;
+  padding: 20px 20px 40px;
+  width: 220px;
+  min-height: 130px;
+
+  &:hover {
+    background: #444;
+    color: #ddd;
+
+    & > .#{$presentation}__date {
+      color: #aaa;
+    }
+  }
+}
+
+.#{$presentation}__date {
+  display: block;
+  color: #777;
+  font-size: 13px;
+  line-height: 2;
+}
+
+@media (max-width: 696px) {
+  body { margin: 0; }
+  .#{$presentation} { display: block; }
+  .#{$presentation}__link {
+    padding: 15px 15px 10px;
+    min-height: 0;
+    width: auto;
+  }
+}
