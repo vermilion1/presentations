@@ -1,4 +1,5 @@
 Presentations
 =============
-+ [Grunt.js](http://vermilion1.github.com/presentations/grunt)
-+ [Responsive Interfaces](http://vermilion1.github.com/presentations/responsive-interfaces)
++ [How Browsers Work](http://vermilion1.github.io/presentations/how-browsers-work)
++ [Grunt.js](http://vermilion1.github.io/presentations/grunt)
++ [Responsive Interfaces](http://vermilion1.github.io/presentations/responsive-interfaces)
