@@ -1,0 +1,45 @@
+.reveal .-m-top-40 { margin-top: 40px; }
+.reveal .-m-left-50 { margin-left: 50px; }
+.reveal .-a-left { text-align: left; }
+.reveal .-a-center { text-align: center; }
+
+.reveal pre code {
+  max-height: 450px;
+  background: #312F2D;
+}
+
+/* first slide */
+
+.reveal .-cover h1,
+.reveal .-cover h2,
+.reveal .-cover p {
+  text-align: left;
+  margin-left: 260px;
+}
+.reveal .-cover h1 {
+  font-size: 2.5em;
+  text-shadow: none;
+}
+.reveal .-cover h2 {
+  font-size: 1.5em;
+  margin-top: -10px;
+}
+.reveal .-cover > .-author-name {
+  margin-top: 40px;
+}
+.reveal .-cover > .-author-position {
+  font-size: 55%;
+  margin-top: -10px;
+}
+.reveal .-cover > .-logo {
+  position: absolute;
+  top: -50px;
+  left: 30px;
+}
+
+/* html parsing */
+
+.reveal .-html-parsing .-slide-2 pre {
+  width: 50%;
+  float: left;
+}
