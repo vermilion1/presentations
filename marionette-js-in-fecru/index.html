@@ -40,31 +40,86 @@
         <h2>Introduction</h2>
         <aside class="notes">
           Marionette simplifies your Backbone application code with robust views and architecture solutions.
+          Less boilerplate code and memory leaks.
         </aside>
       </section>
 
       <section>
+        <h2>Backbone</h2>
+        <p>MVP, where the view is a presenter and template is a view</p>
+        <p><small><i>☝️ Confusing and unimportant information</i></small></p>
+      </section>
+
+      <section>
         <section>
-          <h2>Backbone</h2>
-          <p>MVP, where the view is a presenter and template is a view</p>
-          <p><small><i>☝️ Confusing and unimportant information</i></small></p>
+          <h2>Backbone<br/>Model</h2>
+          <blockquote>
+            Models are the heart of any JavaScript application, containing the interactive data as well as a large part of the logic surrounding it: conversions, validations, computed properties, and access control.
+          </blockquote>
         </section>
 
         <section>
           <h2>Backbone<br/>Model</h2>
+          <pre><code>var Human = Backbone.Model.extend({
+  defaults: {
+    name: 'Fetus',
+    age: 0,
+    child: ''
+  },
+  initialize() {
+    console.log('Whatever we want to do when constructor is called.');
+  }
+});
+
+var human = new Human({ name: 'Thomas', age: 67, child: 'Ryan'});
+var age = human.get('age'); // 67
+var name = human.get('name'); // 'Thomas'
+var child = human.get('child'); // 'Ryan'
+
+human.on('change:age', (model, newValue) => console.log('Sto lat!'));
+human.set('age', 68); // Prints 'Sto lat!'</code></pre>
+          <aside class="notes">
+            Defaults, events, get and set.
+          </aside>
         </section>
 
         <section>
-          <h2>Backbone<br/>Collection</h2>
-        </section>
+          <h2>Backbone<br/>Model</h2>
+          <pre><code>var UserModel = Backbone.Model.extend({
+    urlRoot: '/user',
+    defaults: {
+      name: '',
+      email: ''
+    }
+});
 
-        <section>
-          <h2>Backbone<br/>View</h2>
-        </section>
+var user = new UserModel();
+var userDetails = {
+  name: 'Thomas',
+  email: 'gmail@thomas.com'
+};
 
-        <section>
-          <h2>Backbone<br/>Router</h2>
+user.save(userDetails, {
+  success(user) {
+    console.log(JSON.stringify(user));
+  }
+})</code></pre>
+          <aside class="notes">
+            This one will open POST request because of missed id.
+          </aside>
         </section>
+      </section>
+
+      <section>
+        <h2>Backbone<br/>Collection</h2>
+      </section>
+
+      <section>
+        <h2>Backbone<br/>View</h2>
+      </section>
+
+      <section>
+        <h2>Backbone<br/>Router</h2>
       </section>
 
       <section>
@@ -126,15 +181,6 @@
           <p>
             Show a sorted filtered list without breaking a sweat.
             Have a massive collection? Want to add or remove an item? No worries!
-          </p>
-        </section>
-
-        <section>
-          <h2>Utilities</h2>
-          <p>
-            Learn to love the details.
-            We've added tons of features from templateHelpers,
-            to a declarative UI hash, that will keep you from ever wanting to go back.
           </p>
         </section>
 
