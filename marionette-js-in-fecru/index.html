@@ -226,6 +226,16 @@ var myAlbum = new Album([song1,
 
         <section>
           <h2>Backbone<br/>View</h2>
+          <ul>
+            <li>Works with a single Node</li>
+            <li>Shouldn't touch DOM elements outside its root element</li>
+            <li>Can be rendered without existing in a DOM</li>
+            <li>Can be composed of multiple sub views</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Backbone<br/>View</h2>
 <pre><code>var SearchView = Backbone.View.extend({
   template: 'A string in this case, but we use precompiled soy template',
   render() {
