@@ -39,7 +39,6 @@
 
 /* html parsing */
 
-.reveal .-html-parsing .-slide-2 pre {
-  width: 50%;
-  float: left;
+.reveal .-bb-collection-crud-map-slide table td {
+  padding-right: 40px;
 }

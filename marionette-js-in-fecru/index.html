@@ -45,9 +45,33 @@
       </section>
 
       <section>
-        <h2>Backbone</h2>
-        <p>MVP, where the view is a presenter and template is a view</p>
-        <p><small><i>☝️ Confusing and unimportant information</i></small></p>
+        <section>
+          <h2>Backbone</h2>
+          <p>MVP, where the view is a presenter and template is a view</p>
+          <p><small><i>☝️ Confusing and unimportant information</i></small></p>
+        </section>
+
+        <section>
+          <h2>Backbone<br />components</h2>
+          <ul>
+            <li>
+              Model<br />
+              <small>An abstraction over single REST resource</small>
+            </li>
+            <li>
+              Collection<br />
+              <small>An abstraction over a REST collection of resources</small>
+            </li>
+            <li>
+              View<br />
+              <small>A logical UI component</small>
+            </li>
+            <li>
+              Router<br />
+              <small>A way to maintain application state</small>
+            </li>
+          </ul>
+        </section>
       </section>
 
       <section>
@@ -93,6 +117,9 @@ human.set('age', 56); // Prints 'Sto lat!'</code></pre>
     defaults: {
       name: '',
       email: ''
+    },
+    getName() {
+      return this.get('name');
     }
 });
 
@@ -102,11 +129,7 @@ var userDetails = {
   email: 'gmail@chucknorris.com'
 };
 
-user.save(userDetails, {
-  success(user) {
-    console.log(JSON.stringify(user));
-  }
-})</code></pre>
+user.save(userDetails);</code></pre>
           <aside class="notes">
             This one will open POST request because of missed id.
           </aside>
@@ -120,6 +143,7 @@ user.save(userDetails, {
             Collections are ordered sets of models. You can bind "change" events to be notified when any model in the collection has been modified, listen for "add" and "remove" events, fetch the collection from the server, and use a full suite of Underscore.js methods.
           </blockquote>
         </section>
+
         <section>
           <h2>Backbone<br/>Collection</h2>
           <pre><code>var Song = Backbone.Model.extend({
@@ -144,6 +168,44 @@ var myAlbum = new Album([song1,
 ]);
 </code></pre>
         </section>
+
+        <section class="-bb-collection-crud-map-slide">
+          <h2>Backbone<br/>Collection</h2>
+          <h4>Default CRUD to REST map</h4>
+          <blockquote>
+            <table>
+              <tr>
+                <td>create</td>
+                <td>→ POST</td>
+                <td>/collection</td>
+              </tr>
+              <tr>
+                <td>read</td>
+                <td>→ GET</td>
+                <td>/collection[/id]</td>
+              </tr>
+              <tr>
+                <td>update</td>
+                <td>→ PUT</td>
+                <td>/collection/id</td>
+              </tr>
+              <tr>
+                <td>patch</td>
+                <td>→ PATCH</td>
+                <td>/collection/id</td>
+              </tr>
+              <tr>
+                <td>delete</td>
+                <td>→ DELETE</td>
+                <td>/collection/id</td>
+              </tr>
+            </table>
+          </blockquote>
+          <aside class="notes">
+            This map can be overridden using `sync` method.
+            We can event fetch the data from DB, Storage and so on.
+          </aside>
+        </section>
       </section>
 
       <section>
@@ -159,6 +221,56 @@ var myAlbum = new Album([song1,
           </blockquote>
           <aside class="notes">
             We use soy templates for example.
+          </aside>
+        </section>
+
+        <section>
+          <h2>Backbone<br/>View</h2>
+<pre><code>var SearchView = Backbone.View.extend({
+  template: 'A string in this case, but we use precompiled soy template',
+  render() {
+    this.$el.html(this.template);
+    return this;
+  }
+});
+
+var searchView = new SearchView({
+  el: $('.search-container')
+});
+
+searchView.render();</code></pre>
+          <aside class="notes">
+            Template can be loaded also from the HTML - script tag with specific type like html/template,
+            so it won't be evaluated.
+          </aside>
+        </section>
+
+        <section>
+          <h2>Backbone<br/>View</h2>
+<pre><code>var SearchView = Backbone.View.extend({
+  className: 'search',
+  template: '<input type="search" class="search--input" />',
+  events: {
+    'input .search--input': 'searchInputHandler'
+  },
+
+  searchInputHandler(e) {
+    this.model.setQuery(e.currentTarget.value);
+  },
+
+  render() {
+    this.$el.html(this.template);
+    return this;
+  }
+});
+
+var searchModel = new SearchModel(); // Defined somewhere
+var searchView = new SearchView({ model: searchModel });
+
+searchView.render().$el.appendTo('.search-container');
+</code></pre>
+          <aside class="notes">
+            Besides class name we can change tag name, add some extra attributes to the element.
           </aside>
         </section>
       </section>
