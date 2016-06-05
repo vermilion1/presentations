@@ -276,7 +276,55 @@ searchView.render().$el.appendTo('.search-container');
       </section>
 
       <section>
-        <h2>Backbone<br/>Router</h2>
+        <section>
+          <h2>Backbone<br/>Router</h2>
+          <blockquote>
+            Backbone.Router provides methods for routing client-side pages, and connecting them to actions and events.
+          </blockquote>
+          <aside class="notes">
+            During page load, after your application has finished creating all of its routers, be sure to call Backbone.history.start() or Backbone.history.start({pushState: true}) to route the initial URL.          </aside>
+        </section>
+
+        <section>
+          <h2>Backbone<br/>Router</h2>
+<pre><code>Backbone.history.start({ pushState: true }); // Using History API
+Backbone.history.start(); // Using hashes</code></pre>
+          <p>
+            Backbone.history has to be started after all routes are created.
+          </p>
+          <aside class="notes">
+            Backbone can use History API and at the same time has a fallback to the fragment version of the URL.
+          </aside>
+        </section>
+
+        <section>
+          <h2>Backbone<br/>Router</h2>
+<pre><code>var AppRouter = Backbone.Router.extend({
+    routes: {
+        'contact': 'contactUs',   // static
+        'blog/:page': 'blogPage', // :param
+        '*notFound': 'notFound'   // *splat
+    }
+});
+
+var router = new AppRouter();
+
+router.on('route:contactUs',
+           () => console.log('Render contact us page.'));
+
+router.on('route:blogPage',
+           page => console.log('Render requested blog page.', page));
+
+router.on('route:notFound',
+           fragment => console.log('Render 404 page.', fragment));
+
+Backbone.history.start();
+</code></pre>
+          <aside class="notes">
+            Backbone matches routes from top to bottom.
+            *Splat routes has to be placed above other routes in the same namespace to avoid bugs.
+          </aside>
+        </section>
       </section>
 
       <section>
