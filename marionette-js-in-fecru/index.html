@@ -16,7 +16,7 @@
 <body>
   <div class="reveal">
 
-    <div class="slides">
+    <footer class="slides">
       <section class="-cover">
         <h1>Marionette.js</h1>
         <h2>in FeCru</h2>
@@ -568,7 +568,7 @@ const View = Marionette.ItemView.extend({ /* ... */ });
           <pre><code>define('components/permissions/permissions-layout-view', ['require'], require => {
   'use strict';
 
-  return Marionette.LayoutView({
+  return Marionette.LayoutView.extend({
     // Prototype methods
     regions: {
       filter: '.filter'
@@ -908,15 +908,41 @@ new CompositeView({
       </section>
 
       <section>
-        <h2 class="-transform-none">LayoutView</h2>
-        <blockquote>
-          A LayoutView is a hybrid of an ItemView and a collection of Region objects. They
-          are ideal for rendering application layouts with multiple sub-regions
-          managed by specified region managers.
-        </blockquote>
-        <p>
-          Extends from Marionette.ItemView
-        </p>
+        <section>
+          <h2 class="-transform-none">LayoutView</h2>
+          <blockquote>
+            A LayoutView is a hybrid of an ItemView and a collection of Region objects. They
+            are ideal for rendering application layouts with multiple sub-regions
+            managed by specified region managers.
+          </blockquote>
+          <p>
+            Extends from Marionette.ItemView
+          </p>
+        </section>
+
+        <section>
+          <h2 class="-transform-none">LayoutView</h2>
+          <p>Usage</p>
+          <pre><code>const LayoutView = Marionette.LayoutView.extend({
+  template: 'Some layout <header></header> and here <footer></footer>',
+  regions: {
+    header: 'header'
+    footer: 'footer'
+  }
+};
+
+const layoutView = new LayoutView();
+
+layoutView.render();
+layoutView.filter.show(new FilterView());
+layoutView.content.show(new ContentView());
+</code></pre>
+          <aside class="notes">
+            This the basic layout usage.
+            The view can be more complicated but because we develop everything as a component
+            we do not need all its features.
+          </aside>
+        </section>
       </section>
 
       <section>
