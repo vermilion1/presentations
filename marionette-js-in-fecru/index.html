@@ -658,7 +658,12 @@ const View = Marionette.ItemView.extend({ /* ... */ });
 
         <section>
           <h2 class="-transform-none">Marionette.View</h2>
-          <p>Do not touch it</p>
+          <p>Do not use it directly</p>
+          <aside class="notes">
+            Marionette has a base Marionette.View class that other views extend from.
+            This base view provides some common and core functionality for
+            other views to take advantage of.
+          </aside>
         </section>
 
         <section>
@@ -670,6 +675,106 @@ const View = Marionette.ItemView.extend({ /* ... */ });
           <p>
             Extends from Marionette.View
           </p>
+        </section>
+
+        <section>
+          <h2 class="-transform-none">ItemView</h2>
+          <p>Tamplate-less view</p>
+          <pre><code>const MyView = Marionette.ItemView.extend({
+  template: false,
+
+  ui: {
+    button: '.button'
+  },
+
+  events: {
+    'click @ui.button': 'buttonClickHandler'
+  },
+
+  buttonClickHandler() {
+    console.log('Halo');
+  }
+});
+
+const view = new MyView({el: '.existing-el'}).render();</code></pre>
+          <aside class="notes">
+            An ItemView can be attached to existing elements as well.
+            The primary benefit of this is to attach behavior and events to
+            static content that has been rendered by your server.
+            Render has to be called to bind UI events.
+          </aside>
+        </section>
+
+        <section>
+          <h2 class="-transform-none">ItemView</h2>
+          <p>Data serialization</p>
+          <pre><code>const UserModel = Backbone.Model.extend({
+  getUsername() {
+    return this.get('username');
+  }
+});
+
+const UserView1 = Marionette.ItemView.extend({
+  template: 'User: <%- username %>'
+});
+
+const UserView2 = UserView1.extend({
+  serializeData() {
+    return {
+      username: this.model.getUsername().toUpperCase()
+    };
+  }
+});
+
+const userModel = new UserModel({username: 'test-user'});
+const view1 = new UserView1({model: userModel}).render(); // User: test-user
+const view2 = new UserView2({model: userModel}).render(); // User: TEST-USER</code></pre>
+          <aside class="notes">
+            If the serialization is a collection, the results are passed in as an "items" array.
+          </aside>
+        </section>
+
+        <section>
+          <h2 class="-transform-none">ItemView</h2>
+          <p>Model and collection events</p>
+          <pre><code>Marionette.ItemView.extend({
+  modelEvents: {
+    change: 'onModelChanged'
+  },
+
+  collectionEvents: {
+    add: 'onModelAdded'
+  },
+
+  onModelChanged() { /* ... */ },
+  onModelAdded() { /* ... */ }
+});</code></pre>
+        </section>
+
+        <section>
+          <h2 class="-transform-none">ItemView</h2>
+          <p>Lifecycle events</p>
+          <p>
+            before:render | render<br />
+            before:destroy | destroy
+          </p>
+          <pre><code>const View = Marionette.ItemView.extend({
+  onRender() {
+    // Manipulate the `el` here. It's already been rendered.
+    // Usually you want to initialize some plugins here etc.
+  }
+});
+
+const view = new View();
+
+this.listenTo(view, 'before:render',
+              () => { /* do something before the view is rendered */ });
+
+// Later...
+view.render();</code></pre>
+          <aside class="notes">
+            Inside the view events can be handled by defining the method with a name: 'on' + camelcased event name.
+          </aside>
         </section>
 
         <section>
