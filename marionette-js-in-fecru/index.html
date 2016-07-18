@@ -658,14 +658,16 @@ const View = Marionette.ItemView.extend({ /* ... */ });
 
         <section>
           <h2 class="-transform-none">Marionette.View</h2>
-          <p>Do not use it directly</p>
+          <p>Do not use it</p>
           <aside class="notes">
             Marionette has a base Marionette.View class that other views extend from.
             This base view provides some common and core functionality for
             other views to take advantage of.
           </aside>
         </section>
+      </section>
 
+      <section>
         <section>
           <h2 class="-transform-none">ItemView</h2>
           <blockquote>
@@ -776,7 +778,9 @@ view.render();</code></pre>
             Inside the view events can be handled by defining the method with a name: 'on' + camelcased event name.
           </aside>
         </section>
+      </section>
 
+      <section>
         <section>
           <h2 class="-transform-none">CollectionView</h2>
           <blockquote>
@@ -848,33 +852,33 @@ const ParentView = Marionette.CollectionView.extend({
             Inside the view events can be handled by defining the method with a name: 'on' + camelcased event name.
           </aside>
         </section>
+      </section>
 
-        <section>
-          <h2 class="-transform-none">CompositeView</h2>
-          <blockquote>
-            Used as a composite view for scenarios where it should represent both a
-            branch and leaf in a tree structure, or for scenarios where a
-            collection needs to be rendered within a wrapper template.
-          </blockquote>
-          <p>
-            Extends from Marionette.CollectionView
-          </p>
-          <aside class="notes">
-            The same DOM ordering rule as for CollectionView applies here.
-          </aside>
-        </section>
+      <section>
+        <h2 class="-transform-none">CompositeView</h2>
+        <blockquote>
+          Used as a composite view for scenarios where it should represent both a
+          branch and leaf in a tree structure, or for scenarios where a
+          collection needs to be rendered within a wrapper template.
+        </blockquote>
+        <p>
+          Extends from Marionette.CollectionView
+        </p>
+        <aside class="notes">
+          The same DOM ordering rule as for CollectionView applies here.
+        </aside>
+      </section>
 
-        <section>
-          <h2 class="-transform-none">LayoutView</h2>
-          <blockquote>
-            A LayoutView is a hybrid of an ItemView and a collection of Region objects. They
-            are ideal for rendering application layouts with multiple sub-regions
-            managed by specified region managers.
-          </blockquote>
-          <p>
-            Extends from Marionette.ItemView
-          </p>
-        </section>
+      <section>
+        <h2 class="-transform-none">LayoutView</h2>
+        <blockquote>
+          A LayoutView is a hybrid of an ItemView and a collection of Region objects. They
+          are ideal for rendering application layouts with multiple sub-regions
+          managed by specified region managers.
+        </blockquote>
+        <p>
+          Extends from Marionette.ItemView
+        </p>
       </section>
 
       <section>
