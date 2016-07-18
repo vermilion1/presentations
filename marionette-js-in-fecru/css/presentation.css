@@ -2,6 +2,8 @@
 .reveal .-m-left-50 { margin-left: 50px; }
 .reveal .-a-left { text-align: left; }
 .reveal .-a-center { text-align: center; }
+.reveal .-c-gray { color: gray; }
+.reveal .-transform-none { text-transform: none; }
 
 .reveal pre code {
   max-height: 480px;
@@ -41,4 +43,11 @@
 
 .reveal .-bb-collection-crud-map-slide table td {
   padding-right: 40px;
+}
+
+/* icons */
+
+.reveal .-i-docs {
+  font-size: 80%;
+  margin-left: 10px;
 }

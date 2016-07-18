@@ -33,7 +33,8 @@
           <li>Key benefits</li>
           <li>Features</li>
           <li>How it works</li>
-          <li>Component</li>
+          <li>Components</li>
+          <li>Views</li>
           <li>Links</li>
         </ul>
       </section>
@@ -522,7 +523,7 @@ const View = Marionette.ItemView.extend({ /* ... */ });
 
       <section>
         <section>
-          <h2>Component</h2>
+          <h2>Components</h2>
           <ul>
             <li>Exports a factory</li>
             <li>Defines RequireJS modules, do not "require" them</li>
@@ -531,7 +532,7 @@ const View = Marionette.ItemView.extend({ /* ... */ });
         </section>
 
         <section>
-          <h2>Component</h2>
+          <h2>Components</h2>
           <h4>Entry point</h4>
           <p>Must have</p>
           <pre><code>define('components/permissions', ['require'], require => {
@@ -561,7 +562,7 @@ const View = Marionette.ItemView.extend({ /* ... */ });
         </section>
 
         <section>
-          <h2>Component</h2>
+          <h2>Components</h2>
           <h4>Layout</h4>
           <p>Must have for non-trivial components</p>
           <pre><code>define('components/permissions/permissions-layout-view', ['require'], require => {
@@ -584,10 +585,13 @@ const View = Marionette.ItemView.extend({ /* ... */ });
   });
 });
 </code></pre>
+          <aside class="notes">
+            More details in the Views section.
+          </aside>
         </section>
 
         <section>
-          <h2>Component</h2>
+          <h2>Components</h2>
           <h4>Templates</h4>
           <p>Must have</p>
           <pre><code>define('components/permissions/permissions-templates', [], () => {
@@ -613,7 +617,7 @@ const View = Marionette.ItemView.extend({ /* ... */ });
         </section>
 
         <section>
-          <h2>Component</h2>
+          <h2>Components</h2>
           <h4>Styles</h4>
           <p>Must have</p>
           <pre><code>// Root component's element, its sub-elements and modifiers.
@@ -637,6 +641,79 @@ const View = Marionette.ItemView.extend({ /* ... */ });
 .permissions-select2 {
   padding: 5px;
 }</code></pre>
+        </section>
+      </section>
+
+      <section>
+        <section>
+          <h2>Views</h2>
+          <ul>
+            <li><span class="-c-gray">Marionette.</span>View</li>
+            <li><span class="-c-gray">Marionette.</span>ItemView</li>
+            <li><span class="-c-gray">Marionette.</span>CollectionView</li>
+            <li><span class="-c-gray">Marionette.</span>CompositeView</li>
+            <li><span class="-c-gray">Marionette.</span>LayoutView</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2 class="-transform-none">Marionette.View</h2>
+          <p>Do not touch it</p>
+        </section>
+
+        <section>
+          <h2 class="-transform-none">ItemView</h2>
+          <blockquote>
+            A view that represents a single item.<br />
+            That item may be a Backbone.Model or may be a Backbone.Collection
+          </blockquote>
+          <p>
+            Extends from Marionette.View
+          </p>
+        </section>
+
+        <section>
+          <h2 class="-transform-none">CollectionView</h2>
+          <blockquote>
+            Loops through all of the models in the
+            specified collection, renders each of them using a specified childView,
+            then appends the results of the child view's el to the collection view's
+            el.
+          </blockquote>
+          <p>
+            Extends from Marionette.View
+          </p>
+          <aside class="notes">
+            By default the CollectionView will maintain a sorted collection's order
+            in the DOM. This behavior can be disabled by specifying {sort: false} on initialize.
+          </aside>
+        </section>
+
+        <section>
+          <h2 class="-transform-none">CompositeView</h2>
+          <blockquote>
+            Used as a composite view for scenarios where it should represent both a
+            branch and leaf in a tree structure, or for scenarios where a
+            collection needs to be rendered within a wrapper template.
+          </blockquote>
+          <p>
+            Extends from Marionette.CollectionView
+          </p>
+          <aside class="notes">
+            The same DOM ordering rule as for CollectionView applies here.
+          </aside>
+        </section>
+
+        <section>
+          <h2 class="-transform-none">LayoutView</h2>
+          <blockquote>
+            A LayoutView is a hybrid of an ItemView and a collection of Region objects. They
+            are ideal for rendering application layouts with multiple sub-regions
+            managed by specified region managers.
+          </blockquote>
+          <p>
+            Extends from Marionette.ItemView
+          </p>
         </section>
       </section>
 
