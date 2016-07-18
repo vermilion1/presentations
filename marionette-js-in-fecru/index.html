@@ -795,6 +795,61 @@ view.render();</code></pre>
         </section>
 
         <section>
+          <h2 class="-transform-none">CollectionView</h2>
+          <p>Subviews</p>
+          <pre><code>const EmptyView = Marionette.ItemView.extend({
+  template: 'No items found'
+});
+
+const RowView = Marionette.ItemView.extend({
+  template: 'Item id: <%- id %>'
+});
+
+const ListView = Marionette.CollectionView.extend({
+  childView: RowView,   /// or getChildView()
+  emptyView: EmptyView, /// or getEmptyView()
+  childViewOptions() { return { /* ... */ } },
+  emptyViewOptions() { return { /* ... */ } }
+});
+
+const collection = new Backbone.Collection();
+const listView = new ListView({collection: collection});
+
+listView.collection.add({id: 1});</code></pre>
+        </section>
+
+        <section>
+          <h2 class="-transform-none">CollectionView</h2>
+          <p>Lifecycle events</p>
+          <p>
+            before:render | render<br />
+            before:destroy | destroy<br />
+            before:add:child | add:child<br />
+            before:remove:child | remove:child<br />
+            childview:*
+          </p>
+          <pre><code>const ChildView = Marionette.ItemView.extend({
+  triggerShowMessage() {
+    this.trigger('show:message');
+  }
+});
+
+const ParentView = Marionette.CollectionView.extend({
+  childView: ChildView,
+  childEvents: {
+    'show:message': 'onChildrenShowMessage'
+  },
+  onChildviewShowMessage() { /* ... */ }, // or even shorter
+  onChildrenShowMessage() {
+    console.log('The show:message event bubbled up to the parent');
+  }
+});</code></pre>
+          <aside class="notes">
+            Inside the view events can be handled by defining the method with a name: 'on' + camelcased event name.
+          </aside>
+        </section>
+
+        <section>
           <h2 class="-transform-none">CompositeView</h2>
           <blockquote>
             Used as a composite view for scenarios where it should represent both a
