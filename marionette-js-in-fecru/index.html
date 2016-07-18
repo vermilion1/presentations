@@ -800,7 +800,7 @@ view.render();</code></pre>
 
         <section>
           <h2 class="-transform-none">CollectionView</h2>
-          <p>Subviews</p>
+          <p>Children views</p>
           <pre><code>const EmptyView = Marionette.ItemView.extend({
   template: 'No items found'
 });
@@ -855,18 +855,56 @@ const ParentView = Marionette.CollectionView.extend({
       </section>
 
       <section>
-        <h2 class="-transform-none">CompositeView</h2>
-        <blockquote>
-          Used as a composite view for scenarios where it should represent both a
-          branch and leaf in a tree structure, or for scenarios where a
-          collection needs to be rendered within a wrapper template.
-        </blockquote>
-        <p>
-          Extends from Marionette.CollectionView
-        </p>
-        <aside class="notes">
-          The same DOM ordering rule as for CollectionView applies here.
-        </aside>
+        <section>
+          <h2 class="-transform-none">CompositeView</h2>
+          <blockquote>
+            Used as a composite view for scenarios where it should represent both a
+            branch and leaf in a tree structure, or for scenarios where a
+            collection needs to be rendered within a wrapper template.
+          </blockquote>
+          <p>
+            Extends from Marionette.CollectionView
+          </p>
+          <aside class="notes">
+            The same DOM ordering rule as for CollectionView applies here.
+          </aside>
+        </section>
+
+        <section>
+          <h2 class="-transform-none">CompositeView</h2>
+          <p>Usage</p>
+          <pre><code>const CompositeView = Marionette.CompositeView.extend({
+  template: '<h1><%- username %>\'s items</h1><div class="list"></div>',
+  childView: RowView,
+  childViewContainer: '.list',
+
+  modelEvents: {},
+  collectionEvents: {
+    add: 'onModelAdded'
+  },
+
+  onModelAdded() { /* ... */ }
+});
+
+new CompositeView({
+  model: userModel,
+  collection: userItemsCollection
+});</code></pre>
+        </section>
+
+        <section>
+          <h2 class="-transform-none">CompositeView</h2>
+          <p>Lifecycle events</p>
+          <p>
+            before:render:template | render:template<br />
+            before:render:collection | render:collection<br />
+            before:render | render<br />
+            before:destroy | destroy
+          </p>
+          <aside class="notes">
+            Inside the view events can be handled by defining the method with a name: 'on' + camelcased event name.
+          </aside>
+        </section>
       </section>
 
       <section>
