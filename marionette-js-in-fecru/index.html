@@ -89,7 +89,7 @@
 
         <section>
           <h2>Backbone<br/>Model</h2>
-          <pre><code>var Human = Backbone.Model.extend({
+          <pre><code>const Human = Backbone.Model.extend({
   defaults: {
     name: 'Greg',
     age: 0,
@@ -100,10 +100,10 @@
   }
 });
 
-var human = new Human({ name: 'Mike', age: 55, child: 'Wane'});
-var name = human.get('name'); // 'Mike'
-var age = human.get('age'); // 55
-var child = human.get('child'); // 'Wane'
+const human = new Human({ name: 'Mike', age: 55, child: 'Wane'});
+const name = human.get('name'); // 'Mike'
+const age = human.get('age'); // 55
+const child = human.get('child'); // 'Wane'
 
 human.on('change:age', (model, newValue) => console.log('Sto lat!'));
 human.set('age', 56); // Prints 'Sto lat!'</code></pre>
@@ -114,7 +114,7 @@ human.set('age', 56); // Prints 'Sto lat!'</code></pre>
 
         <section>
           <h2>Backbone<br/>Model</h2>
-          <pre><code>var UserModel = Backbone.Model.extend({
+          <pre><code>const UserModel = Backbone.Model.extend({
     urlRoot: '/user',
     defaults: {
       name: '',
@@ -125,8 +125,8 @@ human.set('age', 56); // Prints 'Sto lat!'</code></pre>
     }
 });
 
-var user = new UserModel();
-var userDetails = {
+const user = new UserModel();
+const userDetails = {
   name: 'Chuck',
   email: 'gmail@chucknorris.com'
 };
@@ -156,7 +156,7 @@ user.save(userDetails);</code></pre>
 
         <section>
           <h2>Backbone<br/>Collection</h2>
-          <pre><code>var Song = Backbone.Model.extend({
+          <pre><code>const Song = Backbone.Model.extend({
     defaults: {
       author: null
     },
@@ -165,15 +165,15 @@ user.save(userDetails);</code></pre>
     }
 });
 
-var Album = Backbone.Collection.extend({
+const Album = Backbone.Collection.extend({
     model: Song,
     getKnownAuthors() {
       return this.filter(song => song.hasAuthor())
     }
 });
 
-var song1 = new Song({ author: 'What' });
-var myAlbum = new Album([song1,
+const song1 = new Song({ author: 'What' });
+const myAlbum = new Album([song1,
   { author: 'Ever' }
 ]);
 </code></pre>
@@ -257,7 +257,7 @@ var myAlbum = new Album([song1,
 
         <section>
           <h2>Backbone<br/>View</h2>
-<pre><code>var SearchView = Backbone.View.extend({
+<pre><code>const SearchView = Backbone.View.extend({
   template: 'A string in this case, but we use precompiled soy template',
   render() {
     this.$el.html(this.template);
@@ -265,7 +265,7 @@ var myAlbum = new Album([song1,
   }
 });
 
-var searchView = new SearchView({
+const searchView = new SearchView({
   el: $('.search-container')
 });
 
@@ -278,7 +278,7 @@ searchView.render();</code></pre>
 
         <section>
           <h2>Backbone<br/>View</h2>
-<pre><code>var SearchView = Backbone.View.extend({
+<pre><code>const SearchView = Backbone.View.extend({
   className: 'search',
   template: '<input type="search" class="search--input" />',
   events: {
@@ -295,8 +295,8 @@ searchView.render();</code></pre>
   }
 });
 
-var searchModel = new SearchModel(); // Defined somewhere
-var searchView = new SearchView({ model: searchModel });
+const searchModel = new SearchModel(); // Defined somewhere
+const searchView = new SearchView({ model: searchModel });
 
 searchView.render().$el.appendTo('.search-container');
 </code></pre>
@@ -341,7 +341,7 @@ Backbone.history.start(); // Using hashes</code></pre>
 
         <section>
           <h2>Backbone<br/>Router</h2>
-<pre><code>var AppRouter = Backbone.Router.extend({
+<pre><code>const AppRouter = Backbone.Router.extend({
     routes: {
         'contact': 'contactUs',   // static
         'blog/:page': 'blogPage', // :param
@@ -349,7 +349,7 @@ Backbone.history.start(); // Using hashes</code></pre>
     }
 });
 
-var router = new AppRouter();
+const router = new AppRouter();
 
 router.on('route:contactUs',
            () => console.log('Render contact us page.'));
@@ -481,11 +481,11 @@ Backbone.history.start();
           <h4>atlassian-plugin.xml</h4>
 <pre><code><dependency>com.atlassian.plugin.jslibs:marionette-2.1.0-factory</dependency></code></pre>
           <h4>*.js</h4>
-<pre><code>var _ = require('underscore');
-var Backbone = require('backbone');
-var marionetteFactory = require('atlassian/libs/factories/marionette-2.1.0');
-var Marionette = marionetteFactory(_, Backbone);
-var View = Marionette.ItemView.extend({ /* ... */ });
+<pre><code>const _ = require('underscore');
+const Backbone = require('backbone');
+const marionetteFactory = require('atlassian/libs/factories/marionette-2.1.0');
+const Marionette = marionetteFactory(_, Backbone);
+const View = Marionette.ItemView.extend({ /* ... */ });
 </code></pre>
         </section>
 
@@ -538,18 +538,18 @@ var View = Marionette.ItemView.extend({ /* ... */ });
   'use strict';
 
   // Require dependencies
-  var LayoutView = require('components/permissions/permissions-layout-view');
+  const LayoutView = require('components/permissions/permissions-layout-view');
 
   // Define helpers/variables etc.
-  var validateOptions = options => { /**/ };
+  const validateOptions = options => { /**/ };
 
   return options => {
     // When needed
     validateOptions(options);
 
     // Set up and initialize the component
-    var {$el} = options;
-    var layoutView = LayoutView.create($el);
+    const {$el} = options;
+    const layoutView = LayoutView.create($el);
 
     // Return public methods if needed
     return {
@@ -576,7 +576,7 @@ var View = Marionette.ItemView.extend({ /* ... */ });
   }, {
     // Static methods
     create: ({$el, FilterView, ContentView}) => {
-      var view = new this(el: $el);
+      const view = new this(el: $el);
       view.show.filter(new FilterView());
       view.show.content(new ContentView());
       return view;
