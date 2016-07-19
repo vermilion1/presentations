@@ -32,7 +32,7 @@
           <li>Backbone</li>
           <li>Key benefits</li>
           <li>Features</li>
-          <li>How it works</li>
+          <li>Set up</li>
           <li>Components</li>
           <li>Views</li>
           <li>Links</li>
@@ -379,6 +379,24 @@ Backbone.history.start();
 
       <section>
         <section>
+          <h2>QUnit tests</h2>
+          <ul>
+            <li>Backbone.Model</li>
+            <li>Backbone.Collection</li>
+            <li>And everything else<br /> that can be unit tested</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Webdriver tests</h2>
+          <ul class="small">
+            <li>Views</li>
+          </ul>
+        </section>
+      </section>
+
+      <section>
+        <section>
           <h2>Key<br/>Marionette<br/>benefits</h2>
         </section>
 
@@ -467,58 +485,22 @@ Backbone.history.start();
       </section>
 
       <section>
-        <section>
-          <h2>How it works</h2>
-        </section>
-
-        <section>
-          <h2>Set up</h2>
-          <h4>pom.xml</h4>
+        <h2>Set up</h2>
+        <h4>pom.xml</h4>
 <pre><code><dependency>
-  <groupId>com.atlassian.plugin</groupId>
-  <artifactId>jslibs</artifactId>
-  <version>0.5.0</version>
+<groupId>com.atlassian.plugin</groupId>
+<artifactId>jslibs</artifactId>
+<version>0.5.0</version>
 </dependency></code></pre>
-          <h4>atlassian-plugin.xml</h4>
+        <h4>atlassian-plugin.xml</h4>
 <pre><code><dependency>com.atlassian.plugin.jslibs:marionette-2.1.0-factory</dependency></code></pre>
-          <h4>*.js</h4>
+        <h4>*.js</h4>
 <pre><code>const _ = require('underscore');
 const Backbone = require('backbone');
 const marionetteFactory = require('atlassian/libs/factories/marionette-2.1.0');
 const Marionette = marionetteFactory(_, Backbone);
 const View = Marionette.ItemView.extend({ /* ... */ });
 </code></pre>
-        </section>
-
-        <section>
-          <h2>Structure</h2>
-<pre><code>components/
-  component-name/
-    collections/
-    models/
-    views/
-    component-name.js
-    component-name.less
-    component-name.soy
-    component-name-templates.js
-</code></pre>
-        </section>
-
-        <section>
-          <h2>QUnit tests</h2>
-          <ul>
-            <li>Backbone.Model</li>
-            <li>Backbone.Collection</li>
-            <li>And everything else<br /> that can be unit tested</li>
-          </ul>
-        </section>
-
-        <section>
-          <h2>Webdriver tests</h2>
-          <ul class="small">
-            <li>Views</li>
-          </ul>
-        </section>
       </section>
 
       <section>
@@ -529,6 +511,20 @@ const View = Marionette.ItemView.extend({ /* ... */ });
             <li>Defines RequireJS modules, do not "require" them</li>
             <li>Does not modify the DOM outside its root element</li>
           </ul>
+        </section>
+
+        <section>
+          <h2>Structure</h2>
+          <pre><code>components/
+  component-name/
+    collections/
+    models/
+    views/
+    component-name.js
+    component-name.less
+    component-name.soy
+    component-name-templates.js
+</code></pre>
         </section>
 
         <section>
@@ -554,7 +550,7 @@ const View = Marionette.ItemView.extend({ /* ... */ });
 
     // Return public methods if needed
     return {
-      destroy: () => layoutView.destroy()
+      destroy = () => layoutView.destroy()
     }
   };
 });
